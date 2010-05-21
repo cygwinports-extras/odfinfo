@@ -1,0 +1,25 @@
+--- origsrc/odfinfo/Makefile	2010-03-15 14:41:41.000000000 -0500
++++ src/odfinfo/Makefile	2010-05-21 15:39:33.561295700 -0500
+@@ -1,9 +1,9 @@
+ # how to link libzip (http://nih.at/libzip/)
+-export LDFLAGS+=-lzip -L/usr/lib
++export LIBS+=-lzip -L/usr/lib
+ export CFLAGS+=-I/usr/include
+ 
+ # how to link libxml2 (http://www.xmlsoft.org/)
+-export LDFLAGS+=-lxml2 -L/usr/lib
++export LIBS+=-lxml2 -L/usr/lib
+ export CFLAGS+=-I/usr/include/libxml2
+ 
+ # be more strict on code
+--- origsrc/odfinfo/src/Makefile	2010-03-19 10:32:52.000000000 -0500
++++ src/odfinfo/src/Makefile	2010-05-21 15:39:26.784908200 -0500
+@@ -6,7 +6,7 @@ OBJFILES_ODFINFO=odfinfo.o
+ all: odfinfo
+ 
+ odfinfo: $(OBJFILES) $(OBJFILES_ODFINFO)
+-	$(CC) $(LDFLAGS) -o $@ $^
++	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+ 
+ %.o: %.c $(HDRFILES) $(HDRFILES_ODFINFO)
+ 	$(CC) $(CFLAGS) -c -o $@ $<

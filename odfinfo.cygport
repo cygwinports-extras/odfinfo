@@ -1,0 +1,28 @@
+NAME="odfinfo"
+VERSION=0.1
+RELEASE=2
+CATEGORY="Utils"
+SUMMARY="Command-line tool to extract ODF metadata"
+DESCRIPTION="ODFinfo is a command-line to extract meta information from Open
+Document Format files. Supported meta information includes creator, used
+application, or date of last modification. Ouput is either plain text or
+CSV (using switch -c)."
+HOMEPAGE="http://www.unix-ag.uni-kl.de/~fischer/odfinfo/"
+SRC_URI="${HOMEPAGE}/${NAME}-${VERSION}.tar.lzma"
+SRC_DIR=${NAME}
+
+PATCH_URI="0.1-as-needed.patch"
+
+src_compile() {
+	check_pkg_config DEPS "libxml-2.0 libzip"
+
+	lndirs
+	cd ${B}
+	cygmake CFLAGS="${CFLAGS} ${DEPS_CFLAGS}" LIBS="${DEPS_LIBS}"
+}
+
+src_install() {
+	cd ${B}
+	dobin src/*.exe
+	dodoc gpl.txt
+}

@@ -1,7 +1,0 @@
-category: Utils
-requires: libgcc1 libxml2 libzip1
-sdesc: "Command-line tool to extract ODF metadata"
-ldesc: "ODFinfo is a command-line to extract meta information from Open 
-Document Format files. Supported meta information includes creator, used 
-application, or date of last modification. Ouput is either plain text or 
-CSV (using switch -c)."
